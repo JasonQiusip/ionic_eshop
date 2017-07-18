@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>用户名（手机号）</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>密码</ion-label>
+        <ion-input type="password" value=""></ion-input>
+      </ion-item>
+
+    <ion-item>
+        <ion-label floating>确认密码</ion-label>
+        <ion-input type="password" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>推荐人</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
+
+    <ion-item>
+        <ion-label>会员等级</ion-label>
+        <ion-select [(ngModel)]="interfaces" interface="popover">
+        <ion-option value="0">体验级</ion-option>
+        <ion-option value="1">一星</ion-option>
+        <ion-option value="2">二星</ion-option>
+        <ion-option value="3">三星</ion-option>
+        <ion-option value="4">四星</ion-option>
+        <ion-option value="5">五星</ion-option>
+        <ion-option value="6">六星</ion-option>
+        </ion-select>
+    </ion-item>
+    </ion-list>
+
+
+    <div padding>
+      <button ion-button color="primary" block>注册</button>
+    </div>
+
+</ion-content>

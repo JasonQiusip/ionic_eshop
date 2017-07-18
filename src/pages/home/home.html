@@ -1,17 +1,65 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>福石德商城</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="page-home">
+  
+  <ion-slides>
+
+  <ion-slide *ngFor="let slide of adSlides">
+      <img [src]="slide.img_path"/>
+    </ion-slide>
+
+</ion-slides>
+
+<div style="background-color:#ddd; margin-top:4px">
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+</div>
+<div class="page-nav">
+  <ion-row text-center>
+    <ion-col>
+      <ion-icon name="list-box" color="primary">
+      <div text-center class="icon-text">全部分类</div>
+    </ion-icon>
+    </ion-col>
+    <ion-col>
+      <ion-icon name="contact"></ion-icon>
+       <div text-center class="icon-text">个人中心</div>
+    </ion-col>
+    <ion-col><ion-icon name="git-merge" color="danger"></ion-icon>
+     <div text-center class="icon-text">分销中心</div>
+    </ion-col>
+    <ion-col><ion-icon name="cart" color="primary"></ion-icon>
+     <div text-center class="icon-text">购物车</div>
+    </ion-col>
+  </ion-row>
+</div>
+
+<div class="section-divider"></div>
+<div class="cat_title">精品推荐</div>
+<div class="home-good">
+  <ion-row text-center >
+    <ion-col *ngFor="let best of bestRecommends">
+      <img (click)="gotoGoodDetail()" [src]="best.img_path"/>
+      <label text-center [innerHTML]="best.price"></label>
+      <label text-center [innerHTML]="best.title"></label>
+    </ion-col>
+  </ion-row>
+</div>
+
+<div id="cat">
+  <div class="section-divider"></div>
+  <div class="cat_title">宝石系列</div>
+  <div class="home-good">
+    <ion-row text-center >
+      <ion-col *ngFor="let cat of cat_1">
+        <img [src]="cat.img_path"/>
+        <p text-center [innerHTML]="cat.price"></p>
+        <p text-center [innerHTML]="cat.title"></p>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
 </ion-content>

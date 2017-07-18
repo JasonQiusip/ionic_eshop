@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>商品详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <!--
+  <ion-slides [style.height.%]="35" >
+
+  <ion-slide *ngFor="let goodImg of goodImgs">
+      <img [src]="goodImg.img_path"/>
+  </ion-slide>
+</ion-slides>
+  -->
+    <ion-label>本店售价：</ion-label>
+    <ion-label>3600积分</ion-label>
+    <ion-label>月销售量：</ion-label>
+    <ion-label>1件</ion-label>
+    <ion-label>选择数量</ion-label>
+    <ion-label>商品总价：</ion-label>
+    <ion-label>{{totalPrice}}积分</ion-label>
+
+  <button ion-button outline (tap)="deductEvent($event)">－</button> 
+  <ion-label>{{goodNumb}}</ion-label>
+  <button ion-button outline (tap)="addEvent($event)">+</button>
+  <ion-label>商品库存：{{stock}}</ion-label>
+
+</ion-content>

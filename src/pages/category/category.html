@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      分类
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <ion-card *ngFor="let category of categories">
+    <div style="height:120px; width:100%; background-color:black; ">
+    </div>
+    <div class="card-title" [innerHTML]="category.title"></div>
+    <div class="card-subtitle" [innerHTML]="category.subtitle"></div>
+  </ion-card>
+</ion-content>
