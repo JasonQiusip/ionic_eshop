@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { MyApp } from './app.component';
 
 import {IntroSlidesPage} from '../pages/introslides/introslides';
@@ -19,8 +20,10 @@ import { BrowserPage} from '../pages/browser/browser';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Dialogs } from "@ionic-native/dialogs";
 import {HomeService} from '../providers/home-service';
-import { HTTP, HTTPResponse } from '@ionic-native/http'
+import {StorageService} from '../providers/storage-service';
+import {HttpNg} from '../providers/http-ng';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { HTTP, HTTPResponse } from '@ionic-native/http'
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,8 +67,10 @@ import { HTTP, HTTPResponse } from '@ionic-native/http'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HTTP,
     HomeService,
+    HttpNg,
+    Dialogs,
+    StorageService,
   ]
 })
 export class AppModule {}

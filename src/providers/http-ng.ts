@@ -26,13 +26,10 @@ export class HttpNg{
     {
         let url: string = `${this.APP_SERVER_URL}/${uri}`; 
         return this.http.get(url).timeout(this.TIME_OUT).toPromise()
-            .then(res => res.json() as T)
-            .catch(err => {
-                this.handleError(err);
-            });;
+            .then(res => res.json() as T);
     }
 
-    post<T>(uri: string, body: any) : Promise<T>
+    post<T>(uri: string, body: any) : Promise<void | T>
     {
         let url: string = `${this.APP_SERVER_URL}/${uri}`; 
         var headers = new Headers();
@@ -42,10 +39,10 @@ export class HttpNg{
             .then(res => res.json() as T)
             .catch(err => {
                 this.handleError(err);
-            });;
+            });
     }
 
-    private handleError(error: Response) {
+    public handleError(error: Response) {
         this.alert("提示",error.toString());
         return Observable.throw(error.json().error || 'Server Error');
     }
