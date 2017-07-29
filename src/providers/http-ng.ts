@@ -12,6 +12,8 @@ export class HttpNg{
 
     APP_SERVER_URL: string = "http://www.fsd1688.com";
     TIME_OUT:number = 30000;
+    data:any;
+    key:string;
     constructor(
         private http: Http,
         public loadingCtrl: LoadingController ,
@@ -20,6 +22,27 @@ export class HttpNg{
         public toastCtrl: ToastController
         ) {
         //this.local = new Storage(LocalStorage);
+    }
+
+    loadHomeData(uri: string):any{
+        //let url: string = `${this.APP_SERVER_URL}/${uri}`; 
+        let url:string = 'assets/data/data.json';
+        if(this.data)
+        {
+            return Observable.of(this.data);
+        }else{
+            return this.http.get(url).timeout(this.TIME_OUT)
+            .map(this.processData, this);
+        }
+    }
+
+    processData(data:any){
+        this.data = data.json();
+        
+        for(this.key in this.data.info)
+        {
+            console.log(this.key);
+        }
     }
 
     get<T>(uri: string) : Promise<T>
