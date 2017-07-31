@@ -26,27 +26,18 @@ export class HomePage {
         },
     ];
 
-  bestRecommends=[
-        {
-           img_path: "http://39.108.10.118/images/201706/thumb_img/65_thumb_G_1498428274006.jpg",
-           price:"11",
-           title: ""
-        },
-        {
-           img_path: "http://39.108.10.118/images/201706/thumb_img/65_thumb_G_1498428274006.jpg",
-           price:"22",
-           title: ""
-        },
-        {
-           img_path: "http://39.108.10.118/images/201706/thumb_img/65_thumb_G_1498428274006.jpg",
-           price:"32",
-           title: ""
-        },
-      
-    ];
+  wines=[];
+  diamonds=[];
+  teas=[];
+  watercleaners=[];
+  jades=[];
 
-  cat_1:GoodInfo[] = [];
-
+  wineTitle:string="名酒系列";
+  diamondTitle:string="蓝宝石系列";
+  teaTitle:string="精品茶叶系列";
+  watercleanerTitle:string="净水器系列";
+  jadeTitle:string="玉石系列";
+  
   constructor(public navCtrl: NavController, 
     private homeService:HomeService, 
     public httpNg:HttpNg) {
@@ -65,23 +56,55 @@ export class HomePage {
     
   }
 
-  ionViewLoaded(){
-    console.log("ionViewLoaded");
+  ionViewWillEnter(){
+    console.log("ionViewWillEnter");
    this.loadHomePageData();
   }
 
   loadHomePageData()
   {
     console.log("load data");
-    this.httpNg.get<JSON>("app/api.php?act=search_goods_list")
-            .then(res=>{
-              console.log("load data success");
-                //this.homeData = homeData;
-                //this.cat_1 = homeData['info']['data_info'];
-                console.log(res['info']);
-            }).catch(err => {
-                this.httpNg.handleError(err);
-            });
+    let key:string = "";
+    this.httpNg.loadHomeData('app/api.php?act=search_goods_list').subscribe(
+                    data => {
+                        for(key in data.info)
+                        {
+                            console.log(key);
+                            if(key != 'counts')
+                            console.log(data.info[key].goods);
+                            if(key == this.wineTitle)
+                            {
+                              this.wines = data.info[key].goods;
+                            }
+                            if(key == this.diamondTitle)
+                            {
+                              this.diamonds = data.info[key].goods;
+                            }
+                            if(key == this.teaTitle)
+                            {
+                              this.teas = data.info[key].goods;
+                            }
+                            if(key == this.watercleanerTitle)
+                            {
+                              this.watercleaners = data.info[key].goods;
+                            }
+                            if(key == this.jadeTitle)
+                            {
+                              this.jades = data.info[key].goods;
+                            }
+                        }
+                    },
+                    error => console.log(error)
+            );
+    // this.httpNg.get<JSON>("app/api.php?act=search_goods_list")
+    //         .then(res=>{
+    //           console.log("load data success");
+    //             //this.homeData = homeData;
+    //             //this.cat_1 = homeData['info']['data_info'];
+    //             console.log(res['info']);
+    //         }).catch(err => {
+    //             this.httpNg.handleError(err);
+    //         });
   }
 
 }

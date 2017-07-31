@@ -6,6 +6,9 @@ import 'rxjs/add/operator/timeout';
 import { Observable } from 'rxjs/Observable';
 import { StorageService } from "./storage-service";
 import { Dialogs } from '@ionic-native/dialogs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/finally';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class HttpNg{
@@ -31,14 +34,21 @@ export class HttpNg{
         {
             return Observable.of(this.data);
         }else{
+            console.log('httpget');
             return this.http.get(url).timeout(this.TIME_OUT)
-            .map(this.processData, this);
+            .map((data1)=>{
+                console.log('processData11');
+                this.data = data1.json();
+               
+                return this.data;
+            })
+            .finally(() => console.log("end"));
         }
     }
 
-    processData(data:any){
+    processHomeData(data:any){
+        console.log('processData');
         this.data = data.json();
-        
         for(this.key in this.data.info)
         {
             console.log(this.key);
