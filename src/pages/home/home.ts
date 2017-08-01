@@ -56,6 +56,11 @@ export class HomePage {
     
   }
 
+  buildWholePath(imgPath:string):string{
+
+      return this.imgPrefix+imgPath;
+  }
+
   ionViewWillEnter(){
     console.log("ionViewWillEnter");
    this.loadHomePageData();
@@ -106,5 +111,7 @@ export class HomePage {
     //             this.httpNg.handleError(err);
     //         });
   }
+
+
 
 }

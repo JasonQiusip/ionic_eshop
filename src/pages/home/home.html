@@ -55,7 +55,7 @@
   <div class="home-good">
     <ion-row text-center >
       <ion-col *ngFor="let wine of wines">
-        <img [src]="wine.goods_img"/>
+        <img [src]="buildWholePath(wine.goods_img)"/>
         <p text-center [innerHTML]="wine.maket_price"></p>
         <p text-center [innerHTML]="wine.name"></p>
       </ion-col>
