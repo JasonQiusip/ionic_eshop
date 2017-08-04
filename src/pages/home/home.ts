@@ -26,17 +26,10 @@ export class HomePage {
         },
     ];
 
-  wines=[];
-  diamonds=[];
-  teas=[];
-  watercleaners=[];
-  jades=[];
-
-  wineTitle:string="名酒系列";
-  diamondTitle:string="蓝宝石系列";
-  teaTitle:string="精品茶叶系列";
-  watercleanerTitle:string="净水器系列";
-  jadeTitle:string="玉石系列";
+  catTitles = [];
+  cats = [];
+  totalCatCnt:number;
+  index:number = 0;
   
   constructor(public navCtrl: NavController, 
     private homeService:HomeService, 
@@ -54,6 +47,10 @@ export class HomePage {
 
     // this.navCtrl.push(GoodDetailPage);
     
+  }
+
+  gotoDetailPage(good:any){
+    this.navCtrl.push(GoodDetailPage);
   }
 
   buildWholePath(imgPath:string):string{
@@ -76,42 +73,23 @@ export class HomePage {
                         {
                             console.log(key);
                             if(key != 'counts')
-                            console.log(data.info[key].goods);
-                            if(key == this.wineTitle)
                             {
-                              this.wines = data.info[key].goods;
-                            }
-                            if(key == this.diamondTitle)
-                            {
-                              this.diamonds = data.info[key].goods;
-                            }
-                            if(key == this.teaTitle)
-                            {
-                              this.teas = data.info[key].goods;
-                            }
-                            if(key == this.watercleanerTitle)
-                            {
-                              this.watercleaners = data.info[key].goods;
-                            }
-                            if(key == this.jadeTitle)
-                            {
-                              this.jades = data.info[key].goods;
+                              console.log(data.info[key].goods);
+                              this.catTitles.push(key);
+                              if(data.info[key].goods.length > 6)
+                              {
+                                this.cats.push(data.info[key].goods.slice(0, 6));                                
+                              }
+                              else
+                              {
+                                this.cats.push(data.info[key].goods.slice(0, data.info[key].goods.length));
+                              }
                             }
                         }
+                        this.totalCatCnt = this.catTitles.length;
                     },
                     error => console.log(error)
             );
-    // this.httpNg.get<JSON>("app/api.php?act=search_goods_list")
-    //         .then(res=>{
-    //           console.log("load data success");
-    //             //this.homeData = homeData;
-    //             //this.cat_1 = homeData['info']['data_info'];
-    //             console.log(res['info']);
-    //         }).catch(err => {
-    //             this.httpNg.handleError(err);
-    //         });
   }
-
-
 
 }

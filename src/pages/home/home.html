@@ -38,7 +38,7 @@
 </div>
 
 <div class="section-divider"></div>
-<div class="cat_title">精品推荐</div>
+<!-- <div class="cat_title">精品推荐</div>
 <div class="home-good">
   <ion-row text-center >
     <ion-col *ngFor="let best of bestRecommends">
@@ -47,17 +47,17 @@
       <label text-center [innerHTML]="best.title"></label>
     </ion-col>
   </ion-row>
-</div>
+</div> -->
 
-<div id="cat">
+<div id="cat" *ngFor="let catTitle of catTitles; let i = index;">
   <div class="section-divider"></div>
-  <div class="cat_title">{{wineTitle}}</div>
+  <div class="cat_title">{{catTitle}}</div>
   <div class="home-good">
     <ion-row text-center >
-      <ion-col *ngFor="let wine of wines">
-        <img [src]="buildWholePath(wine.goods_img)"/>
-        <p text-center [innerHTML]="wine.maket_price"></p>
-        <p text-center [innerHTML]="wine.name"></p>
+      <ion-col *ngFor="let good of cats[i]">
+        <img (click)="gotoDetailPage(good)" [src]="buildWholePath(good.goods_img)"/>
+        <p text-center [innerHTML]="good.maket_price"></p>
+        <p text-center [innerHTML]="good.name"></p>
       </ion-col>
     </ion-row>
   </div>
