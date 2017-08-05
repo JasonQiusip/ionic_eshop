@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage,  NavController, NavParams } from 'ionic-angular';
 //import {InAppBrowser} from '@ionic-native/in-app-browser';
-
+import {HttpNg} from '../../providers/http-ng';
 @Component({
     templateUrl:'gooddetail.html'
 })
@@ -13,6 +13,7 @@ export class GoodDetailPage{
       public stock:number = 999;
       public comment_count:number = 0;
       public goodId:any;
+      public goodInfo:any;
       goodImgs=[
         {
            img_path: "http://39.108.10.118/mobile/data/afficheimg/1498344551837756379.jpg"
@@ -25,12 +26,20 @@ export class GoodDetailPage{
         },
     ];
 
-    constructor(public navCtrl: NavController, public navParams:NavParams){
+    constructor(private httpNg:HttpNg, public navCtrl: NavController, public navParams:NavParams){
       //  iab.create('http://fsd1688.com/mobile/goods.php?id=86').show();
     }
     ionViewWillEnter(){
         this.goodId = this.navParams.data.goodId;
         console.log("good id = "+this.goodId);
+        let uri:string = "app/api.php?act=search_goods_detail&goods_id="+this.goodId;
+        this.httpNg.loadGoodDetail(uri).subscribe(
+            data =>{
+                console.log("dataInfo = " + data.info['data_info'].goods_id);
+                this.goodInfo = data.info['data_info'];
+            },
+            error => console.log(error)
+        );
     }
 
     addEvent(e){

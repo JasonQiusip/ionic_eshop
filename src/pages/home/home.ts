@@ -66,23 +66,23 @@ export class HomePage {
     console.log("load data");
     let key:string = "";
     this.httpNg.loadHomeData('app/api.php?act=search_goods_list').subscribe(
-                    data => {
-                        for(key in data.info)
-                        {
-                            console.log(key);
-                            if(key != 'counts')
-                            {
-                              console.log(data.info[key].goods);
-                              this.catTitles.push(key);
-                              if(data.info[key].goods.length >= 6)
-                              {
-                                this.cats.push(data.info[key].goods.slice(0, 6));                                
-                              }
-                            }
-                        }
-                    },
-                    error => console.log(error)
-            );
+            data => {
+                for(key in data.info)
+                {
+                    console.log(key);
+                    if(key != 'counts')
+                    {
+                      console.log(data.info[key].goods);
+                      this.catTitles.push(key);
+                      if(data.info[key].goods.length >= 6)
+                      {
+                        this.cats.push(data.info[key].goods.slice(0, 6));                                
+                      }
+                    }
+                }
+            },
+            error => console.log(error)
+    );
   }
 
 }

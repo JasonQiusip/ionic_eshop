@@ -16,6 +16,7 @@ export class HttpNg{
     APP_SERVER_URL: string = "http://www.fsd1688.com";
     TIME_OUT:number = 30000;
     data:any;
+    goodData:any;
     key:string;
     constructor(
         private http: Http,
@@ -30,6 +31,20 @@ export class HttpNg{
     loadHomeData(uri: string):any{
         //let url: string = `${this.APP_SERVER_URL}/${uri}`; 
         let url:string = 'assets/data/data.json';
+        return this.get_method(url);
+    }
+
+    loadGoodDetail(uri:string):any{
+        let url:string = 'assets/data/good.json';
+        return this.http.get(url).timeout(this.TIME_OUT)
+            .map((data)=>{
+                console.log('loadGoodDetail');
+                return data.json();
+            })
+            .finally(() => console.log("end"));
+    }
+
+    get_method(url:string):any{
         if(this.data)
         {
             return Observable.of(this.data);
