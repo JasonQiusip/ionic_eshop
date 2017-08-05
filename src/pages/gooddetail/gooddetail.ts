@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {IonicPage,  NavController, NavParams } from 'ionic-angular';
 //import {InAppBrowser} from '@ionic-native/in-app-browser';
 
 @Component({
@@ -12,6 +12,7 @@ export class GoodDetailPage{
       public totalPrice:number = 0;
       public stock:number = 999;
       public comment_count:number = 0;
+      public goodId:any;
       goodImgs=[
         {
            img_path: "http://39.108.10.118/mobile/data/afficheimg/1498344551837756379.jpg"
@@ -24,8 +25,12 @@ export class GoodDetailPage{
         },
     ];
 
-    constructor(public navCtrl: NavController){
+    constructor(public navCtrl: NavController, public navParams:NavParams){
       //  iab.create('http://fsd1688.com/mobile/goods.php?id=86').show();
+    }
+    ionViewWillEnter(){
+        this.goodId = this.navParams.data.goodId;
+        console.log("good id = "+this.goodId);
     }
 
     addEvent(e){
