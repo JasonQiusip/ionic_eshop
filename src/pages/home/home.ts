@@ -74,10 +74,10 @@ export class HomePage {
                     {
                       console.log(data.info[key].goods);
                       this.catTitles.push(key);
-                      if(data.info[key].goods.length >= 6)
-                      {
+                      // if(data.info[key].goods.length >= 6)
+                      // {
                         this.cats.push(data.info[key].goods.slice(0, 6));                                
-                      }
+                      // }
                     }
                 }
             },

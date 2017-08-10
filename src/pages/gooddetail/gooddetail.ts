@@ -14,6 +14,7 @@ export class GoodDetailPage{
       public comment_count:number = 0;
       public goodId:any;
       public goodInfo:any;
+      public goodIntro:string;
       goodImgs=[
         {
            img_path: "http://39.108.10.118/mobile/data/afficheimg/1498344551837756379.jpg"
@@ -37,6 +38,9 @@ export class GoodDetailPage{
             data =>{
                 console.log("dataInfo = " + data.info['data_info'].goods_id);
                 this.goodInfo = data.info['data_info'];
+                this.goodIntro = this.goodInfo.intro;
+                this.goodIntro = this.goodIntro.replace("/images", "http://www.fsd1688.com/images");
+                console.log(this.goodIntro);
             },
             error => console.log(error)
         );

@@ -4,27 +4,43 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content >
-  <!--
-  <ion-slides [style.height.%]="35" >
-
-  <ion-slide *ngFor="let goodImg of goodImgs">
-      <img [src]="goodImg.img_path"/>
+<ion-content>
+  <ion-slides [style.height.%]="55">
+  <ion-slide [style.height.%]="100">
+      <img class="good_img" [src]="goodInfo?.image_default"/>
   </ion-slide>
 </ion-slides>
-  -->
-    <ion-label>{{goodInfo?.name}}</ion-label>
+
+    <ion-label class="goot_title">{{goodInfo?.name}}</ion-label>
+    <ion-list>
+<ion-item>
+    
     <ion-label>本店售价：</ion-label>
     <ion-label>{{goodInfo?.price}}积分</ion-label>
+</ion-item>
+<ion-item >  
     <ion-label>月销售量：</ion-label>
-    <ion-label>1件</ion-label>
-    <ion-label>选择数量</ion-label>
-    <ion-label>商品总价：</ion-label>
-    <ion-label>{{totalPrice}}积分</ion-label>
-
-  <button ion-button outline (tap)="deductEvent($event)">－</button> 
-  <ion-label>{{goodNumb}}</ion-label>
-  <button ion-button outline (tap)="addEvent($event)">+</button>
-  <ion-label>商品库存：{{stock}}</ion-label>
+    <ion-label>{{goodInfo?.marketable}}件</ion-label>
+</ion-item>
+      </ion-list>
+    <ion-label style="font-size:16px; padding-left:4px; padding-bottom:8px">选择数量:
+    </ion-label>
+      
+    <ion-list>
+      <ion-item>
+         <ion-label >
+      <button ion-button outline style="height:36px;width:36px;margin-right:12px;" (tap)="deductEvent($event)">－</button> 
+    {{goodNumb}}
+    <button ion-button  outline style="height:36px;width:36px;margin-left:12px; margin-right:8px;"  (tap)="addEvent($event)">+</button>
+    </ion-label>
+      </ion-item>
+<ion-item>
+   <ion-label>商品总价：{{totalPrice}}积分</ion-label>
+</ion-item>
+<ion-item>
+  <ion-label>商品库存：{{goodInfo?.store}}</ion-label>
+</ion-item>
+    </ion-list>
+<div [innerHtml]="goodIntro"></div>
 
 </ion-content>
