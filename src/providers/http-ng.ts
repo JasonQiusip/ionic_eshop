@@ -29,12 +29,13 @@ export class HttpNg{
     }
 
     loadHomeData(uri: string):any{
-        //let url: string = `${this.APP_SERVER_URL}/${uri}`; 
+        // let url: string = `${this.APP_SERVER_URL}/${uri}`; 
         let url:string = 'assets/data/data.json';
         return this.get_method(url);
     }
 
     loadGoodDetail(uri:string):any{
+        //  let url: string = `${this.APP_SERVER_URL}/${uri}`; 
         let url:string = 'assets/data/good.json';
         return this.http.get(url).timeout(this.TIME_OUT)
             .map((data)=>{

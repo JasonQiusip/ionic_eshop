@@ -16,7 +16,7 @@ import { CategoryPage} from '../pages/category/category';
 import { CartPage} from '../pages/cart/cart';
 import { GoodDetailPage} from '../pages/gooddetail/gooddetail';
 import { BrowserPage} from '../pages/browser/browser';
-
+import { BrowserPopoverPage} from '../pages/browser/browser-popover';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,6 +40,7 @@ import {HttpNg} from '../providers/http-ng';
     CartPage,
     GoodDetailPage,
     BrowserPage,
+    BrowserPopoverPage,
   ],
   imports: [
     BrowserModule,

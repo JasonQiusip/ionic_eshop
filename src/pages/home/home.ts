@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import {GoodDetailPage} from '../gooddetail/gooddetail';
 import {BrowserPage} from '../browser/browser';
 import {HomeService} from '../../providers/home-service';
@@ -30,6 +30,7 @@ export class HomePage {
   cats = [];
   
   constructor(public navCtrl: NavController, 
+    private modalCtrl:ModalController,
     private homeService:HomeService, 
     public httpNg:HttpNg) {
 
@@ -48,7 +49,9 @@ export class HomePage {
   }
 
   gotoDetailPage(good:any){
-    this.navCtrl.push(GoodDetailPage, {goodId:good.id});
+   // this.navCtrl.push(GoodDetailPage, {goodId:good.id});
+    let modal = this.modalCtrl.create(GoodDetailPage, {goodId:good.id});
+    modal.present();
   }
 
   buildWholePath(imgPath:string):string{

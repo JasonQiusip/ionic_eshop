@@ -1,7 +1,18 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>商品详情</ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+         <ion-icon name="arrow-back" ></ion-icon> 
+        </button>
+    </ion-buttons>
+
+    <ion-title>
+      商品详情
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button strong>购买</button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -44,3 +55,9 @@
 <div [innerHtml]="goodIntro"></div>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title (click)="buy()">购买</ion-title>
+  </ion-toolbar>
+</ion-footer>
