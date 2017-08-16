@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {IonicPage,  NavController, NavParams, ViewController } from 'ionic-angular';
-//import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {HttpNg} from '../../providers/http-ng';
 @Component({
     templateUrl:'gooddetail.html'
@@ -15,34 +14,16 @@ export class GoodDetailPage{
       public goodId:any;
       public goodInfo:any;
       public goodIntro:string;
-      goodImgs=[
-        {
-           img_path: "http://39.108.10.118/mobile/data/afficheimg/1498344551837756379.jpg"
-        },
-        {
-           img_path: "http://39.108.10.118/mobile/data/afficheimg/1498344551837756379.jpg"
-        },
-        {
-           img_path: "http://39.108.10.118/mobile/data/afficheimg/1498344551837756379.jpg"
-        },
-    ];
-
+      
     constructor(private httpNg:HttpNg, 
         public navCtrl: NavController, 
         public navParams:NavParams,
         public viewCtrl: ViewController
     ){
-      //  iab.create('http://fsd1688.com/mobile/goods.php?id=86').show();
     }
+
     ionViewWillEnter(){
 
-        // let elements = document.querySelectorAll(".tabbar");
-        // if(elements != null) {
-        //     Object.keys(elements).map((key) => {
-        //         elements[key].style.display ='none';
-        //     });
-        // }   
-        
         this.goodId = this.navParams.data.goodId;
         console.log("good id = "+this.goodId);
         let uri:string = "app/api.php?act=search_goods_detail&goods_id="+this.goodId;
@@ -57,15 +38,6 @@ export class GoodDetailPage{
             error => console.log(error)
         );
     }
-
-    // ionViewWillLeave() {
-    //     let elements = document.querySelectorAll(".tabbar");
-    //     if(elements != null) {
-    //         Object.keys(elements).map((key) => {
-    //             elements[key].style.display ='flex';
-    //         });
-    //     }
-    // }   
 
     addEvent(e){
         this.goodNumb++;
@@ -88,6 +60,14 @@ export class GoodDetailPage{
     }
 
     buy(){
+        
+    }
+
+    addToCart(){
+
+    }
+
+    gotoBasket(){
         
     }
 }

@@ -10,3 +10,27 @@
     font-weight:bold;
     text-align: center;
 }
+
+.buy {
+    border: 1px solid;
+    -webkit-border-radius: .5em;
+    border-radius: .5em;
+    padding: .8em;
+    font-size: 16px;
+    min-width: 7em;
+    border-color: #B69F7B;
+    color: #B69F7B;
+    margin-right: 10px;
+}
+
+.cart {
+    border: 1px solid;
+    -webkit-border-radius: .5em;
+    border-radius: .5em;
+    padding: .8em;
+    font-size: 16px;
+    min-width: 7em;
+    border-color: #B69F7B;
+    background-color: #B69F7B;
+    color: #fff;
+}

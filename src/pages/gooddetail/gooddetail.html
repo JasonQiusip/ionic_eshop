@@ -2,13 +2,13 @@
   <ion-toolbar>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-         <ion-icon name="arrow-back" ></ion-icon> 
+         <ion-icon name="arrow-back"  color="primary" ></ion-icon> 
         </button>
     </ion-buttons>
 
-    <ion-title>
+    <!-- <ion-title>
       商品详情
-    </ion-title>
+    </ion-title> -->
     <ion-buttons end>
       <button ion-button strong>购买</button>
     </ion-buttons>
@@ -58,6 +58,14 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title (click)="buy()">购买</ion-title>
+
+    <button class="buy" type="button" (click)="buy()">立刻购买</button>
+    <button class="cart" type="button" (click)="addToCart()">加入购物车</button>
+
+    <ion-buttons end>
+        <button ion-button (click)="gotoBasket()">
+         <ion-icon name="basket" color="primary" style="font-size:36px"></ion-icon> 
+        </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-footer>
